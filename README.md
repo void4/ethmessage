@@ -1,5 +1,7 @@
 # EthMessage
 
+![screenshot](https://raw.githubusercontent.com/void4/ethmessage/master/screenshot.png)
+
 With EthMessage you can pin messages to the world map.
 The information is stored permanently in [IPFS](https://ipfs.io) and referenced by the [Ethereum](https://ethereum.org) Blockchain.
 
