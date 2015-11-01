@@ -1,0 +1,155 @@
+<head>
+  <title>EthMessage</title>
+  <link rel="shortcut icon" href="icon.png"> 
+	<link rel="apple-itouch-icon" href="icon.png">
+   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+    <!--<script src="ipfsapi.min.js"></script>-->
+</head>
+
+<body>
+	  
+</body>
+
+<template name="main">
+	{{> navigation}}
+	{{> yield}}
+</template>
+
+<template name="home">
+	{{> map}}
+</template>
+
+<template name="register">
+  <h2>Register</h2>
+  <form class="register">
+      <p>Email: <input type="email" name="email"></p>
+      <p>Password: <input type="password" name="password"></p>
+      <p><input type="submit" value="Register"></p>
+  </form>
+</template>
+
+
+
+<template name="login">
+    <h2>Login</h2>
+    <form class="login">
+        <p>Email: <input type="email" name="email"></p>
+        <p>Password: <input type="password" name="password"></p>
+        <p><input type="submit" value="Login"></p>
+    </form>
+</template>
+
+
+
+<template name="navigation">
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{{pathFor route='home'}}">EthMessage</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="{{isActiveRoute 'about'}}"><a href="{{pathFor route='about'}}">About <span class="sr-only">(current)</span></a></li>
+      </ul>
+      <!--
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+      -->
+      <!--
+      <ul class="nav navbar-nav navbar-right">
+        {{#if currentUser}}
+	        <li class="dropdown">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
+	          <ul class="dropdown-menu">
+	            <li><a href="#"><i class="fa fa-money"></i>
+	            Funds</a></li>
+	            <li><a href="#"><i class="fa fa-cog"></i>
+	            Settings</a></li>
+	            <li role="separator" class="divider"></li>
+	            <li><a href="#" class="logout"><i class="fa fa-sign-out"></i>
+	            Logout</a></li>
+	          </ul>
+	        </li>
+	      {{else}}
+	      	<li><a href="{{pathFor route='register'}}">Register</a></li>
+	      	<li><a href="{{pathFor route='login'}}">Login</a></li>
+	      {{/if}}
+      </ul>
+      -->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+</template>
+
+<template name="comment">
+  <form id="comment_form" onsubmit="">
+	  <!--<input type="text" name="comment">-->
+	  <input type="hidden" name="longitude" value="{{latlong.lng}}">
+	  <input type="hidden" name="latitude" value="{{latlong.lat}}">
+	  <textarea name="message" rows="1" value="{{msg}}"></textarea>
+		<button type='submit'>
+		  <i class='fa fa-comment'></i>
+		</button>
+	</form>
+</template>
+
+<template name="map">
+	 <div id="map" class="custom-popup"></div>
+</template>
+
+<template name="about">
+	With EthMessage you can pin messages to the world map.
+	<br>
+	The information is stored permanently in <a href="https://ipfs.io">IPFS</a> and referenced by the <a href="https://ethereum.org">Ethereum</a> Blockchain.
+	<br><br>
+	<pre>
+	<code>
+var hashlistContract = web3.eth.contract([{"constant":false,"inputs":[{"name":"hash","type":"string"}],"name":"publish","outputs":[],"type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"hashes","outputs":[{"name":"","type":"string"}],"type":"function"},{"constant":true,"inputs":[],"name":"namecount","outputs":[{"name":"number","type":"uint256"}],"type":"function"}]);
+
+hashlist = hashlistContract.at("0xc89a9ccdbc84d743c22a583d85931bb92c1bb78c")
+	</code></pre>
+	<br>
+	<pre>
+	<code>
+
+CommentSchema = new SimpleSchema({
+  comment: {
+    type: String
+  },
+  latitude: {
+    type: Number,
+    decimal: true,
+    min: -90,
+    max: 90
+  },
+  longitude: {
+    type: Number,
+    decimal: true,
+    min: -180,
+    max: 180
+  }
+});
+	</code></pre>
+	<br><br>
+	You can also run this website locally with the <a href="https://meteor.com">Meteor</a> framework. This requires an <a href="https://github.com/ipfs/go-ipfs">IPFS</a> node and a <a href="https://github.com/ethereum/go-ethereum/">Geth</a> instance with RPC enabled.
+	<br><br>
+	The project source can be found on Github:
+	<br>
+	Feel free to contribute!
+</template>

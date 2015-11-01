@@ -1,0 +1,43 @@
+/* CSS declarations go here */
+#map {
+	height: 95vh;
+}
+
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0px;
+}
+
+.navbar-inverse .navbar-brand:hover,
+.navbar-inverse .navbar-brand:focus,
+.navbar-inverse .navbar-nav > .active > a {
+	outline: 0;
+}
+
+.custom-popup .leaflet-popup-content-wrapper {
+  background:#2c3e50;
+  color:#222;
+  font-size:12px;
+  width: 210px;
+}
+
+.custom-popup .leaflet-popup-content-wrapper a {
+  color:rgba(0,0,0,0.5);
+}
+
+.custom-popup .leaflet-popup-tip-container {
+  width:30px;
+  height:12px;
+}
+
+.custom-popup .leaflet-popup-tip {
+  border-left:5px solid transparent;
+  border-right:5px solid transparent;
+  border-top:5px solid #2c3e50;
+}
+
+@-moz-document url-prefix() {
+  textarea {
+      height: 2em;
+  }
+}
